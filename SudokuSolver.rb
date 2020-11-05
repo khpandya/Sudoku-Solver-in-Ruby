@@ -32,28 +32,26 @@ Col7=[Row1[6],Row2[6],Row3[6],Row4[6],Row5[6],Row6[6],Row7[6],Row8[6],Row9[6]]
 Col8=[Row1[7],Row2[7],Row3[7],Row4[7],Row5[7],Row6[7],Row7[7],Row8[7],Row9[7]]
 Col9=[Row1[8],Row2[8],Row3[8],Row4[8],Row5[8],Row6[8],Row7[8],Row8[8],Row9[8]]
 #make boxes subarrays
-Box1=[sudo_problem[0][0],sudo_problem[0][1],sudo_problem[0][2],sudo_problem[1][0],sudo_problem[1]
-    [1],sudo_problem[1][2],sudo_problem[2][0],sudo_problem[2][1],sudo_problem[2][2]]
-Box2=[sudo_problem[0][3],sudo_problem[0][4],sudo_problem[0][5],sudo_problem[1][3],sudo_problem[1]
-    [4],sudo_problem[1][5],sudo_problem[2][3],sudo_problem[2][4],sudo_problem[2][5]]
-Box3=[sudo_problem[0][6],sudo_problem[0][7],sudo_problem[0][8],sudo_problem[1][6],sudo_problem[1]
-    [7],sudo_problem[1][8],sudo_problem[2][6],sudo_problem[2][7],sudo_problem[2][8]]
-Box4=[sudo_problem[3][0],sudo_problem[3][1],sudo_problem[3][2],sudo_problem[4][0],sudo_problem[4]
-    [1],sudo_problem[4][2],sudo_problem[5][0],sudo_problem[5][1],sudo_problem[5][2]]
-Box5=[sudo_problem[3][3],sudo_problem[3][4],sudo_problem[3][5],sudo_problem[4][3],sudo_problem[4]
-    [4],sudo_problem[4][5],sudo_problem[5][3],sudo_problem[5][4],sudo_problem[5][5]]
-Box6=[sudo_problem[3][6],sudo_problem[3][7],sudo_problem[3][8],sudo_problem[4][6],sudo_problem[4]
-    [7],sudo_problem[4][8],sudo_problem[5][6],sudo_problem[5][7],sudo_problem[5][8]]
-Box7=[sudo_problem[6][0],sudo_problem[6][1],sudo_problem[6][2],sudo_problem[7][0],sudo_problem[7]
-    [1],sudo_problem[7][2],sudo_problem[8][0],sudo_problem[8][1],sudo_problem[8][2]]
-Box8=[sudo_problem[6][3],sudo_problem[6][4],sudo_problem[6][5],sudo_problem[7][3],sudo_problem[7]
-    [4],sudo_problem[7][5],sudo_problem[8][3],sudo_problem[8][4],sudo_problem[8][5]]
-Box9=[sudo_problem[6][6],sudo_problem[6][7],sudo_problem[6][8],sudo_problem[7][6],sudo_problem[7]
-    [7],sudo_problem[7][8],sudo_problem[8][6],sudo_problem[8][7],sudo_problem[8][8]]
+Box1=[sudo_problem[0][0],sudo_problem[0][1],sudo_problem[0][2],sudo_problem[1][0],sudo_problem[1][1],sudo_problem[1][2],sudo_problem[2][0],sudo_problem[2][1],sudo_problem[2][2]]
+Box2=[sudo_problem[0][3],sudo_problem[0][4],sudo_problem[0][5],sudo_problem[1][3],sudo_problem[1][4],sudo_problem[1][5],sudo_problem[2][3],sudo_problem[2][4],sudo_problem[2][5]]
+Box3=[sudo_problem[0][6],sudo_problem[0][7],sudo_problem[0][8],sudo_problem[1][6],sudo_problem[1][7],sudo_problem[1][8],sudo_problem[2][6],sudo_problem[2][7],sudo_problem[2][8]]
+Box4=[sudo_problem[3][0],sudo_problem[3][1],sudo_problem[3][2],sudo_problem[4][0],sudo_problem[4][1],sudo_problem[4][2],sudo_problem[5][0],sudo_problem[5][1],sudo_problem[5][2]]
+Box5=[sudo_problem[3][3],sudo_problem[3][4],sudo_problem[3][5],sudo_problem[4][3],sudo_problem[4][4],sudo_problem[4][5],sudo_problem[5][3],sudo_problem[5][4],sudo_problem[5][5]]
+Box6=[sudo_problem[3][6],sudo_problem[3][7],sudo_problem[3][8],sudo_problem[4][6],sudo_problem[4][7],sudo_problem[4][8],sudo_problem[5][6],sudo_problem[5][7],sudo_problem[5][8]]
+Box7=[sudo_problem[6][0],sudo_problem[6][1],sudo_problem[6][2],sudo_problem[7][0],sudo_problem[7][1],sudo_problem[7][2],sudo_problem[8][0],sudo_problem[8][1],sudo_problem[8][2]]
+Box8=[sudo_problem[6][3],sudo_problem[6][4],sudo_problem[6][5],sudo_problem[7][3],sudo_problem[7][4],sudo_problem[7][5],sudo_problem[8][3],sudo_problem[8][4],sudo_problem[8][5]]
+Box9=[sudo_problem[6][6],sudo_problem[6][7],sudo_problem[6][8],sudo_problem[7][6],sudo_problem[7][7],sudo_problem[7][8],sudo_problem[8][6],sudo_problem[8][7],sudo_problem[8][8]]
 
-def solveRow(array)
-
-    #puts array
+#Find the numbers not present in a row  
+def numbersNotInRow(array)
+    numNotInRow=[]
+    for num in (0..9)
+        if(!array.include?(num))
+            numNotInRow<<num
+        end
+    end
+    return numNotInRow
 end
-#solveRow(Row1)
+
+missingR9=numbersNotInRow(Row9)
 
