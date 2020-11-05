@@ -1,28 +1,18 @@
-#puts "hello world"
-#2D array representing the problem - unfilled cells are represented by -1
-sudo_problem = [
-    [-1,-1,-1,2,6,-1,7,-1,1],
-    [6,8,-1,-1,7,-1,-1,9,-1],
-    [1,9,-1,-1,-1,4,5,-1,-1],
-    [8,2,-1,1,-1,-1,-1,4,-1],
-    [-1,-1,4,6,-1,2,9,-1,-1],
-    [-1,5,-1,-1,-1,3,-1,2,8],
-    [-1,-1,9,3,-1,-1,-1,7,4],
-    [-1,4,-1,-1,5,-1,-1,3,6],
-    [7,-1,3,-1,1,8,-1,-1,-1],
-]
-#make row subarrays
-Row1=sudo_problem[0]
-Row2=sudo_problem[1]
-Row3=sudo_problem[2]
-Row4=sudo_problem[3]
-Row5=sudo_problem[4]
-Row6=sudo_problem[5]
-Row7=sudo_problem[6]
-Row8=sudo_problem[7]
-Row9=sudo_problem[8]
+require 'pp'
+
 #make column subarrays
 =begin
+  sudo_problem = [
+        [-1,-1,-1,2,6,-1,7,-1,1],
+        [6,8,-1,-1,7,-1,-1,9,-1],
+        [1,9,-1,-1,-1,4,5,-1,-1],
+        [8,2,-1,1,-1,-1,-1,4,-1],
+        [-1,-1,4,6,-1,2,9,-1,-1],
+        [-1,5,-1,-1,-1,3,-1,2,8],
+        [-1,-1,9,3,-1,-1,-1,7,4],
+        [-1,4,-1,-1,5,-1,-1,3,6],
+        [7,-1,3,-1,1,8,-1,-1,-1],
+    ]
 Col1=[Row1[0],Row2[0],Row3[0],Row4[0],Row5[0],Row6[0],Row7[0],Row8[0],Row9[0]]
 Col2=[Row1[1],Row2[1],Row3[1],Row4[1],Row5[1],Row6[1],Row7[1],Row8[1],Row9[1]]
 Col3=[Row1[2],Row2[2],Row3[2],Row4[2],Row5[2],Row6[2],Row7[2],Row8[2],Row9[2]]
@@ -71,6 +61,17 @@ def valid(array1,array2,array3)
 end
 
 def generateBoardCombination(rows)
+    sudo_problem = [
+        [4,3,5,2,6,9,7,-1,1],
+        [6,8,2,5,7,1,4,9,-1],
+        [1,9,7,8,3,4,5,6,-1],
+        [8,2,6,1,9,5,3,4,-1],
+        [3,7,4,6,8,2,9,1,-1],
+        [9,5,1,7,4,3,-1,2,8],
+        [5,1,9,3,2,6,-1,7,4],
+        [2,4,8,9,5,7,-1,3,6],
+        [7,6,3,4,1,8,2,5,-1],
+    ]
     sudo_combination=sudo_problem
     counter=[0,0,0,0,0,0,0,0,0]
     for i in (0..8)
@@ -121,6 +122,7 @@ def getBox(board)
     box9=[board[6][6],board[6][7],board[6][8],board[7][6],board[7][7],board[7][8],board[8][6],board[8][7],board[8][8]]
     boxValues=[box1,box2,box3,box4,box5,box6,box7,box8,box9]
     return boxValues
+end
 
 
 def validBoard(combination)
@@ -137,29 +139,53 @@ end
 
 
 
-#generate arrays of the numbers missing on each row
-missingR1=numbersNotInRow(Row1)
-missingR2=numbersNotInRow(Row2)
-missingR3=numbersNotInRow(Row3)
-missingR4=numbersNotInRow(Row4)
-missingR5=numbersNotInRow(Row5)
-missingR6=numbersNotInRow(Row6)
-missingR7=numbersNotInRow(Row7)
-missingR8=numbersNotInRow(Row8)
-missingR9=numbersNotInRow(Row9)
-#generate all permutations of missing numbers in each row
-allR1Combinations=missingR1.permutation().to_a
-allR2Combinations=missingR2.permutation().to_a
-allR3Combinations=missingR3.permutation().to_a
-allR4Combinations=missingR4.permutation().to_a
-allR5Combinations=missingR5.permutation().to_a
-allR6Combinations=missingR6.permutation().to_a
-allR7Combinations=missingR7.permutation().to_a
-allR8Combinations=missingR8.permutation().to_a
-allR9Combinations=missingR9.permutation().to_a
+
 
 #go through every combination
 def bruteSolve()
+    #2D array representing the problem - unfilled cells are represented by -1
+    sudo_problem = [
+        [4,3,5,2,6,9,7,-1,1],
+        [6,8,2,5,7,1,4,9,-1],
+        [1,9,7,8,3,4,5,6,-1],
+        [8,2,6,1,9,5,3,4,-1],
+        [3,7,4,6,8,2,9,1,-1],
+        [9,5,1,7,4,3,-1,2,8],
+        [5,1,9,3,2,6,-1,7,4],
+        [2,4,8,9,5,7,-1,3,6],
+        [7,6,3,4,1,8,2,5,-1],
+    ]
+    #make row subarrays
+    row1=sudo_problem[0]
+    row2=sudo_problem[1]
+    row3=sudo_problem[2]
+    row4=sudo_problem[3]
+    row5=sudo_problem[4]
+    row6=sudo_problem[5]
+    row7=sudo_problem[6]
+    row8=sudo_problem[7]
+    row9=sudo_problem[8]
+    #generate arrays of the numbers missing on each row
+    missingR1=numbersNotInRow(row1)
+    missingR2=numbersNotInRow(row2)
+    missingR3=numbersNotInRow(row3)
+    missingR4=numbersNotInRow(row4)
+    missingR5=numbersNotInRow(row5)
+    missingR6=numbersNotInRow(row6)
+    missingR7=numbersNotInRow(row7)
+    missingR8=numbersNotInRow(row8)
+    missingR9=numbersNotInRow(row9)
+    #generate all permutations of missing numbers in each row
+    allR1Combinations=missingR1.permutation().to_a
+    allR2Combinations=missingR2.permutation().to_a
+    allR3Combinations=missingR3.permutation().to_a
+    allR4Combinations=missingR4.permutation().to_a
+    allR5Combinations=missingR5.permutation().to_a
+    allR6Combinations=missingR6.permutation().to_a
+    allR7Combinations=missingR7.permutation().to_a
+    allR8Combinations=missingR8.permutation().to_a
+    allR9Combinations=missingR9.permutation().to_a
+
     allR1Combinations.each_with_index do |value1,index1|
         allR2Combinations.each_with_index do |value2,index2|
             allR3Combinations.each_with_index do |value3,index3|
@@ -184,7 +210,6 @@ def bruteSolve()
         end
     end
     puts "No valid combination found"
-end
-
+end    
 solution=bruteSolve()
-end                          
+pp solution                     
