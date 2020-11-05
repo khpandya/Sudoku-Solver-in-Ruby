@@ -53,5 +53,17 @@ def numbersNotInRow(array)
     return numNotInRow
 end
 
+#checks if row,column and box are valid
+def valid(array1,array2,array3)
+    for num in (0..9)
+        if(!array.include?(num))
+            return false
+        end
+    end
+    return true
+end
+
+
 missingR9=numbersNotInRow(Row9)
+allR9Combinations=missingR9.permutation().to_a
 
