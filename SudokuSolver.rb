@@ -63,7 +63,36 @@ def valid(array1,array2,array3)
     return true
 end
 
-
+#generate arrays of the numbers missing on each row
+missingR1=numbersNotInRow(Row1)
+missingR2=numbersNotInRow(Row2)
+missingR3=numbersNotInRow(Row3)
+missingR4=numbersNotInRow(Row4)
+missingR5=numbersNotInRow(Row5)
+missingR6=numbersNotInRow(Row6)
+missingR7=numbersNotInRow(Row7)
+missingR8=numbersNotInRow(Row8)
 missingR9=numbersNotInRow(Row9)
+#generate all permutations of missing numbers in each row
+allR1Combinations=missingR1.permutation().to_a
+allR2Combinations=missingR2.permutation().to_a
+allR3Combinations=missingR3.permutation().to_a
+allR4Combinations=missingR4.permutation().to_a
+allR5Combinations=missingR5.permutation().to_a
+allR6Combinations=missingR6.permutation().to_a
+allR7Combinations=missingR7.permutation().to_a
+allR8Combinations=missingR8.permutation().to_a
 allR9Combinations=missingR9.permutation().to_a
+
+#go through every combination
+allR1Combinations.each_with_index do |value1,index1|
+    allR2Combinations.each_with_index do |value2,index2|
+        allR3Combinations.each_with_index do |value3,index3|
+            allR4Combinations.each_with_index do |value4,index4|
+                allR5Combinations.each_with_index do |value5,index5|
+                    allR6Combinations.each_with_index do |value6,index6|
+                        allR7Combinations.each_with_index do |value7,index7|
+                            allR8Combinations.each_with_index do |value8,index8|
+                                allR9Combinations.each_with_index do |value9,index9|
+                                    
 
