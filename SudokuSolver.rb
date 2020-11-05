@@ -84,6 +84,31 @@ def generateBoardCombination(rows)
     return sudo_combination
 end
 
+def getCol(board)
+    Col1=[]
+    Col2=[]
+    Col3=[]
+    Col4=[]
+    Col5=[]
+    Col6=[]
+    Col7=[]
+    Col8=[]
+    Col9=[]
+    for num in (0..8)
+        Col1<<board[num][0]
+        Col2<<board[num][1]
+        Col3<<board[num][2]
+        Col4<<board[num][3]
+        Col5<<board[num][4]
+        Col6<<board[num][5]
+        Col7<<board[num][6]
+        Col8<<board[num][7]
+        Col9<<board[num][8]
+    end
+    colValues=[Col1,Col2,Col3,Col4,Col5,Col6,Col7,Col8,Col9]
+    return colValues
+end
+
 def validBoard(combination)
     #rowArray is same as combination
     colArray=getCol(combination)
