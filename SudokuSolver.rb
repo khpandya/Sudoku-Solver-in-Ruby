@@ -22,6 +22,7 @@ Row7=sudo_problem[6]
 Row8=sudo_problem[7]
 Row9=sudo_problem[8]
 #make column subarrays
+=begin
 Col1=[Row1[0],Row2[0],Row3[0],Row4[0],Row5[0],Row6[0],Row7[0],Row8[0],Row9[0]]
 Col2=[Row1[1],Row2[1],Row3[1],Row4[1],Row5[1],Row6[1],Row7[1],Row8[1],Row9[1]]
 Col3=[Row1[2],Row2[2],Row3[2],Row4[2],Row5[2],Row6[2],Row7[2],Row8[2],Row9[2]]
@@ -41,11 +42,11 @@ Box6=[sudo_problem[3][6],sudo_problem[3][7],sudo_problem[3][8],sudo_problem[4][6
 Box7=[sudo_problem[6][0],sudo_problem[6][1],sudo_problem[6][2],sudo_problem[7][0],sudo_problem[7][1],sudo_problem[7][2],sudo_problem[8][0],sudo_problem[8][1],sudo_problem[8][2]]
 Box8=[sudo_problem[6][3],sudo_problem[6][4],sudo_problem[6][5],sudo_problem[7][3],sudo_problem[7][4],sudo_problem[7][5],sudo_problem[8][3],sudo_problem[8][4],sudo_problem[8][5]]
 Box9=[sudo_problem[6][6],sudo_problem[6][7],sudo_problem[6][8],sudo_problem[7][6],sudo_problem[7][7],sudo_problem[7][8],sudo_problem[8][6],sudo_problem[8][7],sudo_problem[8][8]]
-
+=end
 #Find the numbers not present in a row  
 def numbersNotInRow(array)
     numNotInRow=[]
-    for num in (0..9)
+    for num in (1..9)
         if(!array.include?(num))
             numNotInRow<<num
         end
@@ -55,13 +56,47 @@ end
 
 #checks if row,column and box are valid
 def valid(array1,array2,array3)
-    for num in (0..9)
-        if(!array.include?(num))
+    for num in (1..9)
+        if(!array1.include?(num))
+            return false
+        end
+        if(!array2.include?(num))
+            return false
+        end
+        if(!array3.include?(num))
             return false
         end
     end
     return true
 end
+
+def generateBoardCombination(rows)
+    sudo_combination=sudo_problem
+    counter=[0,0,0,0,0,0,0,0,0]
+    for i in (0..8)
+        for j in (0..8)
+            if(sudo_problem[i][j]==-1)
+                sudo_combination[i][j]=rows[i][counter[i]]
+                counter[i]=counter[i]+1
+            end
+        end
+    end
+    return sudo_combination
+end
+
+def validBoard(combination)
+    #rowArray is same as combination
+    colArray=getCol(combination)
+    boxArray=getBox(combination)
+    for i in (0..8)
+        if(!valid(combination[i],colArray[i],boxArray[i]))
+            return false
+        end
+    end
+    return true
+end
+
+
 
 #generate arrays of the numbers missing on each row
 missingR1=numbersNotInRow(Row1)
@@ -85,14 +120,31 @@ allR8Combinations=missingR8.permutation().to_a
 allR9Combinations=missingR9.permutation().to_a
 
 #go through every combination
-allR1Combinations.each_with_index do |value1,index1|
-    allR2Combinations.each_with_index do |value2,index2|
-        allR3Combinations.each_with_index do |value3,index3|
-            allR4Combinations.each_with_index do |value4,index4|
-                allR5Combinations.each_with_index do |value5,index5|
-                    allR6Combinations.each_with_index do |value6,index6|
-                        allR7Combinations.each_with_index do |value7,index7|
-                            allR8Combinations.each_with_index do |value8,index8|
-                                allR9Combinations.each_with_index do |value9,index9|
-                                    
+def bruteSolve()
+    allR1Combinations.each_with_index do |value1,index1|
+        allR2Combinations.each_with_index do |value2,index2|
+            allR3Combinations.each_with_index do |value3,index3|
+                allR4Combinations.each_with_index do |value4,index4|
+                    allR5Combinations.each_with_index do |value5,index5|
+                        allR6Combinations.each_with_index do |value6,index6|
+                            allR7Combinations.each_with_index do |value7,index7|
+                                allR8Combinations.each_with_index do |value8,index8|
+                                    allR9Combinations.each_with_index do |value9,index9|
+                                        rowsToPlugIn=[value1,value2,value3,value4,value5,value6,value7,value8,value9]
+                                        combination=generateBoardCombination(rowsToPlugIn)
+                                        if(validBoard(combination))
+                                            return combination
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    puts "No valid combination found"
+end
 
+                                  
